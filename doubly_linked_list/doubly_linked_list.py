@@ -52,7 +52,7 @@ class DoublyLinkedList:
     if not current_head:
       return None
     else:
-      self.head = current_head.next  # if doesn't exist will be None
+      self.head = current_head.next
     try:
       current_head.next.prev = None
     except:
