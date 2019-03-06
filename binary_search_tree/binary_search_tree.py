@@ -5,7 +5,7 @@ class BinarySearchTree:
     self.right = None
 
   def insert(self, value):
-    # prevent duplicates
+    # prevent duplicate
     if self.value == value:
       return False
     # if value thats being inserted is less than current value,
