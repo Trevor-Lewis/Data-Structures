@@ -8,7 +8,7 @@ class BinarySearchTree:
     # prevent duplicate
     if self.value == value:
       return False
-    # if value thats being inserted is less than current value,
+    # if value thats being inserted is less than current value
     elif value < self.value:
     # check down the left branch
       if self.left:
