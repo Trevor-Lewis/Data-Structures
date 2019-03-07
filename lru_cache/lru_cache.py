@@ -1,6 +1,9 @@
+import collections
+
 class LRUCache:
   def __init__(self, limit=10):
-    pass
+    self.limit = limit
+    self.cache = collections.OrderedDict()
 
   """
   Retrieves the value associated with the given key. Also
@@ -10,7 +13,14 @@ class LRUCache:
   key-value pair doesn't exist in the cache. 
   """
   def get(self, key):
-    pass
+    # try to get the key-value pair from cache
+    try:
+      value = self.cache.get(key)
+      # move key-value pair to front of cache(?)
+      self.cache.move_to_end(key, last = True)
+      return value
+    except KeyError:
+      return None
 
   """
   Adds the given key-value pair to the cache. The newly-
@@ -23,4 +33,11 @@ class LRUCache:
   the newly-specified value. 
   """
   def set(self, key, value):
-    pass
+    # check and see if key is already in cache
+    if not self.cache.get(key):
+      # check if the cache is at maximum
+      if len(self.cache) >= self.limit:
+        # remove the latter accessed key
+        self.cache.popitem(last = False)
+    # add key-value pair tp cache
+    self.cache[key] = value
